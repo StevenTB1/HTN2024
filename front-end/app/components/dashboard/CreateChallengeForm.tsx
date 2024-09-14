@@ -9,11 +9,25 @@ import { PlusCircle } from 'lucide-react'
 const CreateChallengeForm: React.FC = () => {
   const [newChallenge, setNewChallenge] = useState<string>("")
   const [newAmount, setNewAmount] = useState<string>("")
+  const [response, setResponse] = useState('')
 
-  const handleCreateChallenge = () => {
-    console.log("Creating new challenge:", newChallenge, "Amount:", newAmount)
-    setNewChallenge("")
-    setNewAmount("")
+  const handleCreateChallenge = async () => {
+    try {
+        const res = await fetch('http://localhost:5000/create-task', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({"Challenge": newChallenge, "Amount": newAmount }),
+        });
+        console.log("Creating new challenge:", newChallenge, "Amount:", newAmount)
+        setNewChallenge("")
+        setNewAmount("")
+        const data = await res.json();
+        setResponse(data.message);
+    } catch (error) {
+        console.error('Error:', error);
+    }
   }
 
   return (
@@ -49,4 +63,4 @@ const CreateChallengeForm: React.FC = () => {
   )
 }
 
-export default CreateChallengeForm
+export default CreateChallengeForm;

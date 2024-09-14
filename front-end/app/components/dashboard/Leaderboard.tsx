@@ -8,10 +8,10 @@ interface LeaderboardEntry {
 const Leaderboard: React.FC = () => {
   const friends: LeaderboardEntry[] = [
     { name: "Alex", amount: 1200 },
-    { name: "Sam", amount: 980 },
-    { name: "Jordan", amount: 850 },
-    { name: "Taylor", amount: 720 },
-    { name: "Casey", amount: 650 },
+    // { name: "Sam", amount: 980 },
+    // { name: "Jordan", amount: 850 },
+    // { name: "Taylor", amount: 720 },
+    // { name: "Casey", amount: 650 },
   ]
 
   return (
