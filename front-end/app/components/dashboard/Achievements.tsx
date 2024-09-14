@@ -45,4 +45,4 @@ const Achievements: React.FC = () => {
   )
 }
 
-export default Achievements
+export default Achievements;
