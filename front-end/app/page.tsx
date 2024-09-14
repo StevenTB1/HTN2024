@@ -1,9 +1,19 @@
-import Image from "next/image";
+import Head from 'next/head'
+import Header from './components/common/Header'
+import Footer from './components/common/Footer'
 
-export default function Home() {
+const Home: React.FC = () => {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      Test
-    </div>
-  );
+    <>
+      <Head>
+        <title>SaveSquad - Home</title>
+        <meta name="description" content="Welcome to SaveSquad" />
+      </Head>
+      <Header />
+
+      <Footer />
+    </>
+  )
 }
+
+export default Home
