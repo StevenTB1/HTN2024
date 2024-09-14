@@ -10,7 +10,6 @@ const Home: React.FC = () => {
         <meta name="description" content="Welcome to SaveSquad" />
       </Head>
       <Header />
-
       <Footer />
     </>
   )

@@ -4,6 +4,7 @@ import Achievements from "@/app/components/dashboard/Achievements";
 import ChallengeTabs from "@/app/components/dashboard/ChallengeTabs";
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
+import Link from 'next/link';
 
 export default function Welcome(){
     return(
@@ -19,9 +20,11 @@ export default function Welcome(){
                     </p>
                 </div>
                 <div className="flex justify-center mt-4 pt-[20px] pb-[0px]">
+                <Link href="/pages/challenges">
                     <Button>
                         Let's Begin
                     </Button>
+                </Link>
                 </div>
                 <img
                 src="https://cdni.iconscout.com/illustration/premium/thumb/money-savings-illustration-download-in-svg-png-gif-file-formats--saving-locker-earnings-safe-box-coin-collecting-business-investment-pack-finance-illustrations-4528713.png?f=webp"
