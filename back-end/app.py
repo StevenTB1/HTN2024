@@ -9,13 +9,7 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
-#QUICKBOOKS AUTH0 credentials
-CLIENT_ID="ABzURAAhQzNWwtRbkTonBmKZCu6KrZDRIf4h1lH7N2LU7UHZ5o"
-CLIENT_SECRET="yJ06Uox6x3ai2ixXpVOSuFU7WvDMfX9laaAjbc0k"
-REDIRECT_URI = 'http://localhost:5000/callback'
-AUTHORIZATION_BASE_URL = 'https://appcenter.intuit.com/connect/oauth2'
-TOKEN_URL = 'https://oauth.platform.intuit.com/oauth2/v1/tokens/bearer'
-SCOPE = 'com.intuit.quickbooks.accounting' 
+
 
 @app.route('/')
 def home():
