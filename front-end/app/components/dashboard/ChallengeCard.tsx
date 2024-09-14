@@ -30,6 +30,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ title, description, progr
         });
         const data = await res.json();
         setResponse(data.message);
+        setIsOpen(false);
     } catch (error) {
         console.error('Error:', error);
     }
