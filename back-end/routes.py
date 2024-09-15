@@ -51,7 +51,6 @@ def update_task(task_id):
     # Check if the task was found and updated
     if result.matched_count == 0:
         return jsonify({'message': f'Task with ID {task_id} not found'}), 404
-
     return jsonify({'message': f'Task {task_id} updated to: {input_value}'}), 200
 
 if __name__ == '__main__':
