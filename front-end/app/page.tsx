@@ -45,6 +45,7 @@ const Home: React.FC = () =>
                 width="23%"
             />
             </section>
+      <Footer></Footer>
     </>
   )
 }
