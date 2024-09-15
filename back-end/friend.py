@@ -1,16 +1,17 @@
-from flask import Flask
+from flask import Flask, Blueprint
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+friend_bp = Blueprint('friend', __name__)
 
 # Connect to MongoDB (Update the URI with your connection details)
 client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
 db = client['friends_db']
 
-# Ensure the collection has the desired schema with a unique index on user_id
+# # Ensure the collection has the desired schema with a unique index on user_id
 friends_collection = db['friends']
-friends_collection.create_index("user_id", unique=True)
+# friends_collection.create_index("user_id", unique=True)
 
 
 @app.route('/add_user/<user_id>', methods=['POST'])
@@ -40,5 +41,5 @@ def add_friend(user_id, friend_id):
     except Exception as e:
         return {'status': 'error', 'message': str(e)}
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

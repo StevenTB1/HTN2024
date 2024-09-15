@@ -1,8 +1,9 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from pymongo import MongoClient
 from config import MONGO_URI
 
 app = Flask(__name__)
+challenges_bp = Blueprint('challenges', __name__)
 
 # Connect to MongoDB (Update the URI with your connection details)
 client = MongoClient(MONGO_URI)
@@ -10,7 +11,7 @@ db = client['challenges_db']
 
 # Define the challenges collection and ensure there's a unique index on user_id
 challenges_collection = db['challenges']
-challenges_collection.create_index("user_id", unique=True)
+# challenges_collection.create_index("user_id", unique=True)
 
 @app.route('/add_user', methods=['POST'])
 def add_user():
@@ -47,5 +48,5 @@ def add_achievement(user_id):
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)

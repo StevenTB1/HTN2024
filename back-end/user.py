@@ -1,16 +1,17 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 
 app = Flask(__name__)
+user_bp = Blueprint('user', __name__)
 
 # Connect to MongoDB (Update the URI with your connection details)
-client = MongoClient('mongodb://localhost:27017/')
+client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
 db = client['user_db']
 
 # Define the user collection and ensure there's a unique index on user_id
 user_collection = db['users']
-user_collection.create_index("user_id", unique=True)
+# user_collection.create_index("user_id", unique=True)
 
 @app.route('/create_user', methods=['POST'])
 def create_user():
@@ -39,5 +40,5 @@ def get_user(user_id):
     except Exception as e:
         return jsonify({'status': 'error', 'message': str(e)}), 500
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
