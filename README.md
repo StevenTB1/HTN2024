@@ -5,7 +5,6 @@ The app features an intuitive interface for setting savings goals, tracking expe
 
 
 ## ✨ Features
-User Authentication: Secure registration and login with JWT-based authentication.
 Savings Goals: Create and monitor multiple savings goals, complete with target amounts and deadlines.
 Expense Tracking: Log and track expenses to monitor spending habits.
 Progress Visualization: Interactive charts and graphs to track progress toward savings goals.
