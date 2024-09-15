@@ -2,15 +2,16 @@ from flask import Flask, request, jsonify
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask_cors import CORS
+from config import MONGO_URI
 
 app = Flask(__name__)
-client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
+client = MongoClient(MONGO_URI)
 db = client['tasksdb']
 tasks_collection = db['tasks']
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
 # POST endpoint to create a new task
-@app.route('/tasks', methods=['POST'])
+@app.route('/tasks/create-task', methods=['POST'])
 def create_task():
     data = request.get_json()
     input_value = data.get('inputValue')
@@ -32,7 +33,7 @@ def create_task():
     return jsonify({'message': 'Task created', 'task_id': str(result.inserted_id)}), 201
 
 # PUT endpoint to update an existing task
-@app.route('/tasks/<task_id>', methods=['PUT'])
+@app.route('/tasks/<task_id>/update-task', methods=['PUT'])
 def update_task(task_id):
     data = request.get_json()
     input_value = data.get('inputValue')

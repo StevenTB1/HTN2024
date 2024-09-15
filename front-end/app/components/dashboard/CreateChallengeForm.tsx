@@ -13,7 +13,7 @@ const CreateChallengeForm: React.FC = () => {
 
   const handleCreateChallenge = async () => {
     try {
-        const res = await fetch('http://localhost:5000/create-task', {
+        const res = await fetch('http://localhost:5000/tasks/create-task', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

@@ -24,26 +24,8 @@ const ChallengeTabs: React.FC = () => {
                 amount="$325 / $500 saved"
                 buttonText="Update Progress"
             />
-            {/* <ChallengeCard
-                title="Coffee Cut"
-                description="Reduce coffee expenses by 50%"
-                progress={30}
-                amount="30% reduction achieved"
-                buttonText="Log Expenses"
-            /> */}
             </div>
         </TabsContent>
-        {/* <TabsContent value="completed">
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <ChallengeCard
-                title="New Year's Resolution"
-                description="Save $1000 in 3 months"
-                progress={100}
-                amount="Completed on March 31st"
-                buttonText="View Details"
-            />
-            </div>
-        </TabsContent> */}
       </div>
       </Tabs>
     </>

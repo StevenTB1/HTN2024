@@ -21,7 +21,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ title, description, progr
 
   const updateProgress = async () => {
     try {
-        const res = await fetch('http://localhost:5000/tasks/${taskId}/', {
+        const res = await fetch('http://localhost:5000/tasks/${taskId}/update-task', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
