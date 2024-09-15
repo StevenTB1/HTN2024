@@ -158,5 +158,5 @@ def create_expense(access_token, expense_data):
     response = requests.post(endpoint, headers=headers, json=expense_data)
     return response
 
-# if __name__ == '__main__':
-#     app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, port=5000)

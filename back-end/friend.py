@@ -1,6 +1,7 @@
 from flask import Flask, Blueprint
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from flask_cors import CORS
 
 app = Flask(__name__)
 friend_bp = Blueprint('friend', __name__)
@@ -12,6 +13,7 @@ db = client['friends_db']
 # # Ensure the collection has the desired schema with a unique index on user_id
 friends_collection = db['friends']
 # friends_collection.create_index("user_id", unique=True)
+CORS(friend_bp, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
 
 @app.route('/add_user/<user_id>', methods=['POST'])

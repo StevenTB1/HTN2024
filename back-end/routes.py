@@ -1,8 +1,8 @@
 from flask import Flask, request, jsonify, Blueprint
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from flask_cors import CORS
 from config import MONGO_URI
+from flask_cors import CORS
 
 app = Flask(__name__)
 routes_bp = Blueprint('routes', __name__)
@@ -10,7 +10,7 @@ routes_bp = Blueprint('routes', __name__)
 client = MongoClient(MONGO_URI)
 db = client['tasksdb']
 tasks_collection = db['tasks']
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # POST endpoint to create a new task
 @app.route('/tasks/create-task', methods=['POST'])
