@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { PlusCircle } from 'lucide-react'
+import axios from 'axios';
 
 const CreateChallengeForm: React.FC = () => {
   const [newChallenge, setNewChallenge] = useState<string>("")
@@ -13,22 +14,17 @@ const CreateChallengeForm: React.FC = () => {
 
   const handleCreateChallenge = async () => {
     try {
-        const res = await fetch('http://localhost:5000/tasks/create-task', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({"Challenge": newChallenge, "Amount": newAmount }),
+        const response = await axios.post('http://localhost:5000/api/createtask/', {
+            Challenge: newChallenge,
+            Amount: newAmount
         });
-        console.log("Creating new challenge:", newChallenge, "Amount:", newAmount)
-        setNewChallenge("")
-        setNewAmount("")
-        const data = await res.json();
-        setResponse(data.message);
+        setNewChallenge("");
+        setNewAmount("");
+        setResponse(response.data.message);
     } catch (error) {
         console.error('Error:', error);
     }
-  }
+};
 
   return (
     <div className='p-10'>

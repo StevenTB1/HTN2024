@@ -4,7 +4,6 @@ import http.client
 from config import MONGO_URI
 
 app = Flask(__name__)
-
 client = MongoClient(MONGO_URI)
 db = client['UserData']
 collection = db['Person']
@@ -39,4 +38,3 @@ def create_rbc_memeber(name : str, address : str, phone : str, email : str, bala
 
 if __name__ == "__main__":
     app.run(debug=True)
-    # app.run()

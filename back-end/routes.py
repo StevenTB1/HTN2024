@@ -2,18 +2,15 @@ from flask import Flask, request, jsonify, Blueprint
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from config import MONGO_URI
-from flask_cors import CORS
 
 app = Flask(__name__)
 routes_bp = Blueprint('routes', __name__)
-
 client = MongoClient(MONGO_URI)
 db = client['tasksdb']
 tasks_collection = db['tasks']
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "http://localhost:3000"}})
 
 # POST endpoint to create a new task
-@app.route('/tasks/create-task', methods=['POST'])
+@app.route('/api/create-task/', methods=['POST'])
 def create_task():
     data = request.get_json()
     input_value = data.get('inputValue')
@@ -35,7 +32,7 @@ def create_task():
     return jsonify({'message': 'Task created', 'task_id': str(result.inserted_id)}), 201
 
 # PUT endpoint to update an existing task
-@app.route('/tasks/<task_id>/update-task', methods=['PUT'])
+@app.route('/api/update-task/<taskId>/', methods=['PUT'])
 def update_task(task_id):
     data = request.get_json()
     input_value = data.get('inputValue')
@@ -56,4 +53,4 @@ def update_task(task_id):
     return jsonify({'message': f'Task {task_id} updated to: {input_value}'}), 200
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+    app.run(debug=True)
