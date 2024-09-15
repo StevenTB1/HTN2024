@@ -1,11 +1,12 @@
 from flask import Flask
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+from config import MONGO_URI
 
 app = Flask(__name__)
 
 # Connect to MongoDB (Update the URI with your connection details)
-client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
+client = MongoClient(MONGO_URI)
 db = client['friends_db']
 
 # Ensure the collection has the desired schema with a unique index on user_id

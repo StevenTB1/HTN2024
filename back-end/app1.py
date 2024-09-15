@@ -1,12 +1,11 @@
 from flask import Flask
-# from flask import PyMongo
 from pymongo.mongo_client import MongoClient
 import http.client
+from config import MONGO_URI
 
 app = Flask(__name__)
 
-uri = "mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net"
-client = MongoClient(uri)
+client = MongoClient(MONGO_URI)
 db = client['UserData']
 collection = db['Person']
 
@@ -21,7 +20,6 @@ rbc_token = data.decode("utf-8")
 @app.route('/')
 def index():
     return "Runa"
-
 
 @app.route('/update-progress/<int:id>', methods=['POST'])
 def update_task(id):

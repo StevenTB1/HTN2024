@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
 from pymongo import MongoClient
+from config import MONGO_URI
 
 app = Flask(__name__)
 
 # Connect to MongoDB (Update the URI with your connection details)
-client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
+client = MongoClient(MONGO_URI)
 db = client['challenges_db']
 
 # Define the challenges collection and ensure there's a unique index on user_id

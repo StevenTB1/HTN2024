@@ -5,8 +5,8 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
-db = client['tasksdb']  # Database name
-tasks_collection = db['tasks']  # Collection name
+db = client['tasksdb']
+tasks_collection = db['tasks']
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
 # POST endpoint to create a new task

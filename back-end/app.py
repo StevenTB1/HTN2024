@@ -9,8 +9,6 @@ app = Flask(__name__)
 app.secret_key = os.urandom(24)
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
 
-
-
 @app.route('/')
 def home():
     return 'WELCOME TO QuickBooks OAuth 2.0 integration'
