@@ -51,3 +51,4 @@ const ChallengeTabs: React.FC = () => {
 }
 
 export default ChallengeTabs
+
