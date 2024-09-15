@@ -19,7 +19,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ title, description, progr
   const [inputValue, setInputValue] = useState('')
   const [response, setResponse] = useState('')
 
-  const updateProgress = async () => {
+  const updateTask = async () => {
     try {
         const res = await fetch('http://localhost:5000/tasks/${taskId}/update-task', {
             method: 'PUT',
@@ -76,7 +76,7 @@ const ChallengeCard: React.FC<ChallengeCardProps> = ({ title, description, progr
             </CardContent>
             <CardFooter className="flex justify-between">
               <Button variant="outline" onClick={() => setIsOpen(false)}>Cancel</Button>
-              <Button onClick={updateProgress}>Confirm Update</Button>
+              <Button onClick={updateTask}>Confirm Update</Button>
             </CardFooter>
           </Card>
         </div>
