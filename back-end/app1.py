@@ -23,9 +23,9 @@ def index():
     return "Runa"
 
 
-# @app.router('/update-progress/<int:id>', methods=['POST'])
-# def update_task(id):
-#     return
+@app.route('/update-progress/<int:id>', methods=['POST'])
+def update_task(id):
+    return "hi"
 
 def create_rbc_memeber(name : str, address : str, phone : str, email : str, balance : str = 0):
     headers = {
