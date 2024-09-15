@@ -1,10 +1,12 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, Blueprint
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from flask_cors import CORS
 from config import MONGO_URI
 
 app = Flask(__name__)
+routes_bp = Blueprint('routes', __name__)
+
 client = MongoClient(MONGO_URI)
 db = client['tasksdb']
 tasks_collection = db['tasks']
