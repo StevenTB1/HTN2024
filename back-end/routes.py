@@ -4,7 +4,7 @@ from bson.objectid import ObjectId
 from flask_cors import CORS
 
 app = Flask(__name__)
-client = MongoClient('mongodb://localhost:27017/')  # Replace with your MongoDB connection string
+client = MongoClient('mongodb+srv://htn:htn@htn2024.mabwh.mongodb.net')
 db = client['tasksdb']  # Database name
 tasks_collection = db['tasks']  # Collection name
 CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
@@ -25,14 +25,14 @@ def create_task():
         'Saving Goal': input_value,
         'taskID': taskId
     }
-    
+
     result = tasks_collection.insert_one(task)
 
     # Send response with the created task ID
     return jsonify({'message': 'Task created', 'task_id': str(result.inserted_id)}), 201
 
 # PUT endpoint to update an existing task
-@app.route('/<task_id>/update-task', methods=['PUT'])
+@app.route('/tasks/<task_id>', methods=['PUT'])
 def update_task(task_id):
     data = request.get_json()
     input_value = data.get('inputValue')
